@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: src
+    destination: /webapps/app
+hooks:
+  BeforeInstall:
+    - location: scripts/backup-prev-version.sh
+      runas: root
+  AfterInstall:
+    - location: scripts/install.sh
+      timeout: 180
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 3600
+      runas: root
+  ValidateService:
+    - location: Scripts/healthcheck.sh
+      timeout: 3600
+      runas: codedeployuser
