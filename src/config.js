@@ -1,3 +1,7 @@
+/*For production pass in the config in npm start like this:
+
+PGHOST=mypgdatabase.blah.us-west-2.rds.amazonaws.com PGUSER=blah PGPASSWORD=blah PGDATABASE=blah NODE_ENV=production npm start
+*/
 module.exports = {
     "development":{
         db: {
@@ -10,11 +14,7 @@ module.exports = {
     },
     "production":{
         db: {
-                host:"localhost",
-                port:5432,
-                user:"myappuser",
-                password:"mypassword",
-                database:"myappdb"
+                port:5432
             }
     }
     
